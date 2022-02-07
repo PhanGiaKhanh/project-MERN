@@ -1,0 +1,28 @@
+﻿B1 >	git init
+1 >> npm i express jsonwebtoken mongoose dotenv argon2 cors
+// jsonwebtoken 	## xác thực người dùng
+// mongoose	## nói chuyện server DB Mongoose
+// dotenv		## lấy biến môi trường
+// argon2		## hash password
+// cors		## frontend connect backend
+
+2 >> npm i --save-dev nodemon
+// nodemon 	## tự động chạy lại 
+
+3 >> add "server": "nodemon index" in package.json >> 
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon index"
+  },
+create index.js 
+	const express = require("express");
+	const app = express();
+	app.get("/", (req, res) => res.send("Hello world"));
+	const PORT = 5000;
+	app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+npm run server
+ 
+Extention >> REST Client >> server/create request.http
+	GET http://localhost:5000
+## dùng postman trong VisuaCode
+
