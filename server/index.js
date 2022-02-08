@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
-
+const cors = require("cors");
 const authRouter = require("./routes/auth");
 const postRouter = require("./routes/post");
 
@@ -24,6 +24,7 @@ connectDB();
 
 const app = express();
 app.use(express.json()); // để đọc được tất cả những gì gửi đi bằng json
+app.use(cors());
 
 app.use("/api/auth", authRouter);
 app.use("/api/posts", postRouter);
