@@ -48,3 +48,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjAxN
     "url": "https://vuejs.org",
     "status": "LEARNING"
 }
+
+###
+
+DELETE http://localhost:5000/api/posts/6201d6896659039c943926fd
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjAxNDBkMTI0NWI5YjdhZjg0NDZkN2QiLCJpYXQiOjE2NDQyOTA1ODJ9.At9VJoUiSZ0FciToMwUX0glbRw4eAFwhk6L0E1OxCWI

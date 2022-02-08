@@ -106,4 +106,28 @@ router.put("/:id", verifyToken, async (req, res) => {
   }
 });
 
+// @route DELETE api/posts
+// @desc Delete post
+// @access Private
+router.delete("/:id", verifyToken, async (req, res) => {
+  // vào url ..api/posts >> verifyToken kiểm tra token ? thực hiện arrow function : bỏ qua
+
+  try {
+    const postDeleteCondition = { _id: req.params.id, user: req.userId };
+    const deletePost = await Post.findOneAndDelete(postDeleteCondition);
+
+    // User not authorized to update Post or post not found
+    if (!deletePost) {
+      return res.status(401).json({
+        success: false,
+        message: "Post not found or user not authorized",
+      });
+    }
+
+    res.json({ success: true, post: deletePost });
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+});
 module.exports = router;
