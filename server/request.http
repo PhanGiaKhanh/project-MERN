@@ -2,7 +2,7 @@ POST http://localhost:5000/api/auth/register
 Content-Type: application/json
 
 {
-    "username": "khanh",
+    "username": "In",
     "password": "123"
 }
 
@@ -14,4 +14,18 @@ Content-Type: application/json
 {
     "username": "khanh",
     "password": "123"
+}
+
+###
+
+POST http://localhost:5000/api/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjAxZDZlNzE1MWVlN2RhNzI0MDlkM2QiLCJpYXQiOjE2NDQyODc3MjB9.qledFUJ6fiWmoHPSafz5ueTyZktLZhYg1RpRoLo_PqU 
+
+
+{
+    "title": "React",
+    "description": "khóa học React",
+    "url": "react.com",
+    "status": "LEARNING"
 }
