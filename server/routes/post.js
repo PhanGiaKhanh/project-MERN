@@ -4,6 +4,24 @@ const verifyToken = require("../middleware/auth");
 
 const Post = require("../models/Post");
 
+// @route GET api/posts
+// @desc Get post
+// @access Private
+router.get("/", verifyToken, async (req, res) => {
+  // vào url ..api/posts >> verifyToken kiểm tra token ? thực hiện arrow function : bỏ qua
+
+  try {
+    const posts = await Post.find({ user: req.userId }).populate("user", [
+      "username",
+    ]);
+    // populate bỏ vào user.username
+    res.json({ success: true, posts });
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+});
+
 // @route POST api/posts
 // @desc create post
 // @access Private
