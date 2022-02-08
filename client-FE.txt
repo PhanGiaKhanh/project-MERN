@@ -1,0 +1,15 @@
+﻿npm i react-bootstrap bootstrap axios react-router-dom
+## axios kết nối với server
+## react-router-dom để người dùng chưa login cũng vào được home
+
+*** Important 1: ## rafce  >> key create >>
+
+import React from 'react';
+
+const Landing = () => {
+  return <div></div>;
+};
+
+export default Landing;
+
+
