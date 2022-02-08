@@ -34,4 +34,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjAxZ
 
 GET http://localhost:5000/api/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjAxZDZlNzE1MWVlN2RhNzI0MDlkM2QiLCJpYXQiOjE2NDQyODc3MjB9.qledFUJ6fiWmoHPSafz5ueTyZktLZhYg1RpRoLo_PqU 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjAxNDBkMTI0NWI5YjdhZjg0NDZkN2QiLCJpYXQiOjE2NDQyOTA1ODJ9.At9VJoUiSZ0FciToMwUX0glbRw4eAFwhk6L0E1OxCWI 
+
+###
+
+PUT http://localhost:5000/api/posts/6201d6896659039c943926fd
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjAxNDBkMTI0NWI5YjdhZjg0NDZkN2QiLCJpYXQiOjE2NDQyOTA1ODJ9.At9VJoUiSZ0FciToMwUX0glbRw4eAFwhk6L0E1OxCWI
+
+{
+    "title": "Vue",
+    "description": "khóa học Vue",
+    "url": "https://vuejs.org",
+    "status": "LEARNING"
+}

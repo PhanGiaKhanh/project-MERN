@@ -42,15 +42,64 @@ router.post("/", verifyToken, async (req, res) => {
       description,
       url: url.startsWith("https://") ? url : `https://${url}`,
       // url bắt đầu bằng https:// thì lấy luôn url, nếu không thì thêm https://
-      status: status || "TO LEARN",
-      // người dùng nhập status thì lấy status, nếu không thì status = TO LEARN
-      user: req.userId,
-      // là userId gán userId của User đã create
     });
 
     await newPost.save();
 
     res.json({ success: true, message: "Happy learning!", post: newPost });
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+});
+
+// @route PUT api/posts
+// @desc Update post
+// @access Private
+router.put("/:id", verifyToken, async (req, res) => {
+  // vào url ..api/posts >> verifyToken kiểm tra token ? thực hiện arrow function : bỏ qua
+
+  const { title, description, url, status } = req.body;
+
+  //Simple validation
+  if (!title) {
+    return res
+      .status(400)
+      .json({ success: false, message: "Title is required" });
+  }
+  try {
+    let updatePost = {
+      title,
+      description: description || "",
+      url: (url.startsWith("https://") ? url : `https://${url}`) || "",
+      // url bắt đầu bằng https:// thì lấy luôn url, nếu không thì thêm https://
+      status: status || "TO LEARN",
+    };
+
+    const postUpdateCondition = {
+      _id: req.params.id,
+      user: req.userId,
+    };
+
+    updatePost = await Post.findOneAndUpdate(postUpdateCondition, updatePost, {
+      new: true,
+    });
+    // condition là postUpdateCondition,
+    // dataUpdate là updatePost,
+    // option new:true là nếu update thì trả về Post new, nếu không update thì trả về Post chưa update
+
+    // User not authorized to update Post or post not found
+    if (!updatePost) {
+      return res.status(401).json({
+        success: false,
+        message: "Post not found or user not authorized",
+      });
+    }
+    res.json({
+      success: true,
+      message: "Excellent progress!!",
+      post: updatePost,
+    });
   } catch (e) {
     console.log(e);
     res.status(500).json({ success: false, message: "Internal server error" });

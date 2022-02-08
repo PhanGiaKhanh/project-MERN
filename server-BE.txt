@@ -26,3 +26,11 @@ Extention >> REST Client >> server/create request.http
 	GET http://localhost:5000
 ## dùng postman trong VisuaCode
 
+
+4 >> middleware/auth.js 
+## check token 
+
+5 >> routes/post.js 
+// @route GET api/posts
+// @desc Get post
+// populate() bỏ vào user.username
