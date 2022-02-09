@@ -13,20 +13,23 @@ const Auth = ({ authRoute }) => {
 
   let body;
 
-  if (authLoading)
+  if (authLoading) {
     body = (
       <div className="d-flex justify-content-center mt-2">
         <Spinner animation="border" variant="info" />
       </div>
     );
-  else if (isAuthenticated) return <Navigate to="/dashboard" />;
-  else
+  } else if (isAuthenticated) {
+    return <Navigate to="/dashboard" />;
+  } else {
     body = (
       <>
         {authRoute === "login" && <LoginForm />}
         {authRoute === "register" && <RegisterForm />}
       </>
     );
+  }
+
   return (
     <div className="landing">
       <div className="dark-overlay">

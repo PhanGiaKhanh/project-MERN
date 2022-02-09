@@ -15,6 +15,7 @@ const AuthContextProvider = ({ children }) => {
 
   // Authenticate user
   const loadUser = async () => {
+    // set xHeader for axios
     if (localStorage[LOCAL_STORAGE_TOKEN_NAME]) {
       setAuthToken(localStorage[LOCAL_STORAGE_TOKEN_NAME]);
     }
@@ -28,6 +29,7 @@ const AuthContextProvider = ({ children }) => {
         });
       }
     } catch (error) {
+      // remove token in localStorage and header of axios
       localStorage.removeItem(LOCAL_STORAGE_TOKEN_NAME);
       setAuthToken(null);
       dispatch({
@@ -38,6 +40,7 @@ const AuthContextProvider = ({ children }) => {
   };
 
   useEffect(() => loadUser(), []);
+
   // Login
   const loginUser = async (userForm) => {
     try {
